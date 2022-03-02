@@ -1,6 +1,9 @@
 import 'package:artech_api/graphql/date_time_parser.dart';
 import 'package:http/http.dart';
 
+DateTime? fromGraphQLDateNullableToDartDateTimeNullable(String? date) =>
+    date == null ? null : DateTimeParser.fromGraphQLDateTime(date);
+
 DateTime fromGraphQLDateTimeToDartDateTime(String date) =>
     fromGraphQLDateTimeToDartDateTimeNullable(date)!;
 
@@ -41,6 +44,9 @@ String? fromDartDateTimeToGraphQLDateTimeNullable(DateTime? dateTime) {
   }
   return null;
 }
+
+String? fromDartDateTimeNullableToGraphQLDateNullable(DateTime? date) =>
+    date == null ? null : DateTimeParser.toGraphQlDate(date);
 
 MultipartFile fromGraphQLUploadToDartMultipartFile(MultipartFile file) => file;
 MultipartFile fromDartMultipartFileToGraphQLUpload(MultipartFile file) => file;
